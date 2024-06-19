@@ -1,11 +1,11 @@
 # class loginpage:
 
-#     def __init__(self): #self is refernence variable
-#         print("self:",self)
-#         self.name="shivam"
-#         self.email="shivam123@gmail.com"
-#         self.otp="2456"
-#         self.phone="8360924444"
+#def __init__(self): #self is refernence variable
+#print("self:",self)
+#self.name="shivam"
+#self.email="shivam123@gmail.com"
+#self.otp="2456"
+#self.phone="8360924444"
         
 
 # login1=loginpage()
@@ -22,7 +22,7 @@
 class Dish:
 
     # Parameterized Constructor, with default values of arguments passed to it
-    def __init__(self, name="NA", price=0, rating=1.5):
+    def __init__(self, name="NA", price="0", rating="1.5"):
         # print(">> self is: {}".format(self))
         # copy the contents of name (input to constructor) into self.name (attribute of object)
         self.name = name 
@@ -47,7 +47,7 @@ class Dish:
 
 
 # List of Dishes
-
+"""
 dishes = [
         Dish(), 
         Dish("Dal Makhani", 250, 4.5),
@@ -56,4 +56,37 @@ dishes = [
 print("DISHES:\n")
 for idx in range(len(dishes)):
     dishes[idx].show()
+
+
+"""
+#self???
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
