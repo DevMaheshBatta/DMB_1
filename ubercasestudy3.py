@@ -17,10 +17,10 @@ class Coustmer:
        self.age= input("enter coustmer Age: ")
 
     def show(self):
-        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
         print("Name {}| Phone {}| Email  {}| ".format ,self.name,self.phone,self.email)
         print("Address  {}|  Gender {}|  age {}" .format ,self.address,self.gender,self.age )
-
+        print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 
 coustmer=Coustmer()
 coustmer.add_coustomer_detail()
