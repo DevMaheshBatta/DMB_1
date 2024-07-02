@@ -19,25 +19,25 @@ def main():
         if choice == 1:
             patient = Patient()
             patient.add_patient_details()
-            sql = "insert into Patient values(null, '{name}', '{phone}', '{email}', {age}, '{gender}', '{created_on}')".format_map(vars(patient))
+            sql = "insert into Patient values(null, '{name}', '{phone}', '{email}', '{gender}', '{created_on}')".format_map(vars(patient))
            # sql = "insert into Customer values(null, '{}', '{}', '{}', {}, '{}', null)".format(customer.name, customer.phone, customer.email, customer.age, customer.gender)
             db.write(sql)
             print("[PMS App]", patient.name, "Saved in DataBase")
         elif choice == 2:
-            cid = int(input("Enter Patient ID to Update: "))
-            sql = "select * from Patient where cid = {}".format(cid)
+            pid = int(input("Enter Patient ID to Update: "))
+            sql = "select * from Patient where cid = {}".format(pid)
             rows = db.read(sql)
             print(rows)
 
-            patient = Patient(cid=rows[0][0], name=rows[0][1], phone=rows[0][2], email=rows[0][3], age=rows[0][4], gender=rows[0][5])
+            patient = Patient(pid=rows[0][0], name=rows[0][1], phone=rows[0][2], email=rows[0][3], gender=rows[0][5])
 
-            columns = ["cid", "name", "phone", "email", "age", "gender", "created_on"]    
+            columns = ["pid", "name", "phone", "email", "gender", "created_on"]    
             print(tabulate(rows, headers=columns, tablefmt='grid'))
             print("Patient to Update:")
             patient.show()
             patient.update_patient_details()
 
-            sql = "update  Patient set name = '{name}', phone='{phone}', email='{email}', age={age}, gender='{gender}', created_on='{created_on}' where cid = {cid}".format_map(vars(patient))
+            sql = "update  Patient set name = '{name}', phone='{phone}', email='{email}', gender='{gender}', created_on='{created_on}' where cid = {cid}".format_map(vars(patient))
 
             db.write(sql)
 
@@ -50,25 +50,25 @@ def main():
             ask = input("Are you sure to delete? (yes/no): ")
             if ask == "yes":
                 db.write(sql)
-                print("[CMS App]", cid, "Deleted from DataBase")
+                print("[CMS App]", pid, "Deleted from DataBase")
             else:
                 print("Delete Operation Skipped")
         elif choice == 4:
             phone = input("Enter Patient Phone Number: ")
             sql = "select * from Patient where phone = '{}'".format(phone)
             rows = db.read(sql)
-            columns = ["cid", "name", "phone", "email", "age", "gender", "created_on"]    
+            columns = ["pid", "name", "phone", "email", "gender", "created_on"]    
             print(tabulate(rows, headers=columns, tablefmt='grid'))
         elif choice == 5:
             cid = int(input("Enter Patient ID: "))
             sql = "select * from Patient where cid = {}".format(cid)
             rows = db.read(sql)
-            columns = ["cid", "name", "phone", "email", "age", "gender", "created_on"]    
+            columns = ["pid", "name", "phone", "email", "gender", "created_on"]    
             print(tabulate(rows, headers=columns, tablefmt='grid'))
         elif choice == 6:
             sql = "select * from Patient"
             rows = db.read(sql)
-            columns = ["cid", "name", "phone", "email", "age", "gender", "created_on"]    
+            columns = ["pid", "name", "phone", "email","gender", "created_on"]    
             print(tabulate(rows, headers=columns, tablefmt='grid'))
             
             # for row in rows:
