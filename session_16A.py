@@ -45,8 +45,8 @@ def main():
 
 
         elif choice == 3:
-            cid = int(input("Enter Patient ID to be Deleted: "))
-            sql = "delete from Customer where cid = {}".format(cid)
+            pid = int(input("Enter Patient ID to be Deleted: "))
+            sql = "delete from Customer where pid = {}".format(pid)
             ask = input("Are you sure to delete? (yes/no): ")
             if ask == "yes":
                 db.write(sql)
@@ -60,8 +60,8 @@ def main():
             columns = ["pid", "name", "phone", "email", "gender", "created_on"]    
             print(tabulate(rows, headers=columns, tablefmt='grid'))
         elif choice == 5:
-            cid = int(input("Enter Patient ID: "))
-            sql = "select * from Patient where cid = {}".format(cid)
+            pid = int(input("Enter Patient ID: "))
+            sql = "select * from Patient where pid = {}".format(cid)
             rows = db.read(sql)
             columns = ["pid", "name", "phone", "email", "gender", "created_on"]    
             print(tabulate(rows, headers=columns, tablefmt='grid'))

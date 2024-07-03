@@ -1,6 +1,6 @@
 """
 create table Patient(
-cid int primary key auto_increment,
+pid int primary key auto_increment,
 name varchar(256),
 phone varchar(150),
 email varchar(256),
@@ -12,8 +12,8 @@ import datetime
 
 class Patient:
 
-    def __init__(self, cid=0,name="",phone="",email="",age=0,gender=""):
-        self.cid=cid
+    def __init__(self, pid=0,name="",phone="",email="",age=0,gender=""):
+        self.pid=pid
         self.name=name
         self.phone=phone
         self.email=email

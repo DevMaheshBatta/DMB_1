@@ -22,7 +22,7 @@ def main():
             sql = "insert into Customer values(null, '{name}', '{phone}', '{email}', {age}, '{gender}', '{created_on}')".format_map(vars(customer))
            # sql = "insert into Customer values(null, '{}', '{}', '{}', {}, '{}', null)".format(customer.name, customer.phone, customer.email, customer.age, customer.gender)
             db.write(sql)
-            print("[CMS App]", customer.name, "Saved in DataBase")
+            print("[PMS App]", customer.name, "Saved in DataBase")
         elif choice == 2:
             cid = int(input("Enter Customer ID to Update: "))
             sql = "select * from Customer where cid = {}".format(cid)
@@ -76,7 +76,7 @@ def main():
         elif choice == 0:
             break
         else:
-            print("[CMS APP] Invalid Choice", choice)
+            print("[PMS  APP] Invalid Choice", choice)
 
 if __name__ == "__main__":
     main()
