@@ -86,7 +86,7 @@ def main():
             print("Consultation Created..")
         elif choice == 8:
         
-         sql= "select * from consultation" 
+         sql= "select * from Consultation" 
          rows = db.read(sql)
 
          columns = ["cid", "pid", "remarks", "medicines", "next_followup", "created_on"]  
