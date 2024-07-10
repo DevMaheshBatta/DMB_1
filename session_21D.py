@@ -7,12 +7,13 @@ def main():
     print("Welcome to MongoDB Test App")
     dbHelper = MongoDBHelper()
 
-    
+    """
     user = User()
     user.add_user_details()
     document = vars(user)
-    dbHelper.insert(document)
+    dbHelper.insert(document)"""
     
+    query={"email:jonny@example.com"}
 
     users = dbHelper.fetch()
     for user in users:
