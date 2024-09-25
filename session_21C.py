@@ -4,12 +4,11 @@ from pymongo.server_api import ServerApi
 
 class MongoDBHelper:
 
+    
     def __init__(self, collection="users"):
         uri = "mongodb+srv://DevMahesh:devmahesh09@cluster0.iaylwlx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
         # Only if you face SSL error
-       
-
         # Create a new client and connect to the server
         client = MongoClient(uri, server_api=ServerApi('1'))
 
@@ -36,7 +35,6 @@ class MongoDBHelper:
         documents = self.collection.find(query)
         return list(documents)
     
-
     def delete(self,query=""):
         result=self.collection.find(query)
         print("result is:",result)

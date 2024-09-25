@@ -8,6 +8,7 @@
       </head>
     <body>
         <div class="container-fluid p-5 bg-primary text-white text-center">
+          <img src="{{ url_for('static', filename='image_patient.png') }}" width="120", height="120">
             <h1>Doctors App</h1>
             <p>Welcome, Dr. {{name}}</p> 
             <p>{{email}}</p> 
@@ -26,10 +27,10 @@
                   <a class="nav-link" href="#">Add Consultation</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">View Consultations</a>
+                  <a class="nav-link" href="/fetch-consultations">View Consultations</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Search Patient</a>
+                  <a class="nav-link" href="/search-patient">Search Patient</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="/logout">Logout</a>
@@ -70,7 +71,11 @@
                       <td>{{patient['age']}}</td>
                       <td>{{patient['address']}}</td>
                       <td>{{patient['created_on']}}</td>
-                      <td><a href="#">Update</a> | <a href="#">Delete</a></td>
+                      <td><a href="/update-patient/{{patient['_id']}}">Update</a> 
+                        | <a href="/delete-patient/{{patient['_id']}}">Delete</a> 
+                        | <a href="/add-consultation/{{patient['_id']}}">Add Consultation</a>
+                        | <a href="/fetch-consultations-of-patient/{{patient['_id']}}">View Consultations</a>
+                        </td>
                     </tr>
                     {% endfor %}
                   </tbody>
