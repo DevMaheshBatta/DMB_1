@@ -24,8 +24,8 @@ def index():
         <title>Doctors App</title>
     </head>
     <body>
-        <center>
-            <h3>Welcome to Doctors Appm</h3>
+        <center>    
+            <h3>Welcome to Doctors Appm</h3>                
         </center>
     </body>
     </html>
@@ -349,6 +349,59 @@ def search_patient_from_db():
                                name=session["name"], email=session["email"])
 
 
+
+@web_app.route("/update-patient-consultation/<id>")
+def update_patient_consultation(id):
+    print("Consultation to be updated")
+    session["id"] = id
+
+    # Fetch document from patient collection, where id matches
+    query = {"_id": ObjectId(id)}
+    db_helper.collection = db_helper.db["consultations"]
+
+    # result is a list
+    result = db_helper.fetch(query=query)
+
+    # As we will get the list of documents, and 0th index will be our document
+    # with patient id matching the one we have passed
+    consultation_doc = result[0]
+    return render_template("update_patient_consulatation.html",name=session["name"],email=session["email"],
+                            consultation=consultation_doc)
+                             
+
+
+
+@web_app.route("/update-patient-consulatation-in-db", methods=["POST"])
+def update_patient_consultation_in_db():
+
+    # Create a Dictionary with Data from HTML Register Form
+    consultations_data = {
+        "complaints": request.form["complaints"],
+        "bp": request.form["bp"],                         
+        "temperature": request.form["temperature"],
+        "sugar": request.form["sugar"],
+        "medicines": request.form["medicines"],
+        "remarks": request.form["remarks"],
+       "followup": request.form['followup']
+        
+        
+    }
+
+    db_helper.collection = db_helper.db["consultations"]
+
+    query = {"_id": ObjectId(session["id"])}
+    # Save Patient in DataBase i.e. MongoDB
+    result = db_helper.update( consultations_data, query)
+    return render_template("success.html", message = "Consultation Updated Successfully",
+                           name=session["name"], email=session["email"])
+
+
+
+
+
+
+
+
 def main():
 
     # In order to use Session Tracking, create a Secret Key
@@ -356,7 +409,7 @@ def main():
 
     # Run the App infinitely, till user wont quite
     web_app.run()
-    # web_app.run(port=5001) # optionally you can give the port number
+    # web_app.run(port=5001) # optionally  we can give the port number
 
 if __name__ == "__main__":
     main()
