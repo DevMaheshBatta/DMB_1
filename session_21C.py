@@ -6,7 +6,7 @@ class MongoDBHelper:
 
     
     def __init__(self, collection="users"):
-        uri = "mongodb+srv://DevMahesh:devmahesh09@cluster0.iaylwlx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+        uri = "33"
 
         # Only if you face SSL error
         # Create a new client and connect to the server
